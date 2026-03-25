@@ -11,7 +11,7 @@ import streamlit as st
 
 DB_FILE = "triage_hospital.db"
 
-st.set_page_config(page_title="TRIAGE IA HOSPITAL V5", page_icon="🏥", layout="wide")
+st.set_page_config(page_title="TRIAGE AUTOMATIZADO CON IA V5", page_icon="🏥", layout="wide")
 
 st.markdown("""
 <style>
