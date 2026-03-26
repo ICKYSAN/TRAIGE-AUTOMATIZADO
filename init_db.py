@@ -1,4 +1,3 @@
-
 import sqlite3
 import hashlib
 import os
@@ -38,7 +37,7 @@ def create_tables():
         usuario_captura TEXT,
         rol_usuario TEXT,
         fecha_hora_ingreso TEXT,
-        modulo TEXT NOT NULL DEFAULT 'General',
+        flujo_clinico TEXT NOT NULL DEFAULT 'General',
         frecuencia_cardiaca INTEGER,
         frecuencia_respiratoria INTEGER,
         presion_sistolica INTEGER,
@@ -98,11 +97,16 @@ def create_default_user():
     cur.execute("SELECT id FROM users WHERE username = ?", (username,))
     existing = cur.fetchone()
     if not existing:
-        cur.execute("INSERT INTO users (username, full_name, role, salt, password_hash) VALUES (?, ?, ?, ?, ?)", (username, full_name, role, salt, password_hash))
+        cur.execute(
+            "INSERT INTO users (username, full_name, role, salt, password_hash) VALUES (?, ?, ?, ?, ?)",
+            (username, full_name, role, salt, password_hash),
+        )
+        print("Usuario creado:")
         print("usuario: admin")
         print("contraseña: Admin1234")
     else:
         print("El usuario admin ya existe.")
+
     conn.commit()
     conn.close()
 
